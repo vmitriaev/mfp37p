@@ -3,7 +3,6 @@
 from colorama import Fore, Back
 from colorama import init
 
-# use Colorama to make Termcolor work on Windows too
 init()
 
 print(Fore.BLACK)

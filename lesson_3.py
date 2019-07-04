@@ -1,12 +1,12 @@
-# weather forecast with tips
+import telebot
 
-import pyowm
+bot = telebot.TeleBot("775565560:AAHM-IpOyDDoKeZtHU3CSJzLjSPsx7HEzOY")
 
-owm = pyowm.OWM('9361a6fbf9cabd94ddaa011cbcd6a894', language="ru")
 
-place = (input("Введи город: "))
+@bot.message_handler(content_types=['text'])
+def send_echo(message):
+    #bot.reply_to(message, message.text)
+    bot.send_message(message.chat.id, message.text)
 
-observation = owm.weather_at_place(place)
-w = observation.get_weather()
 
-print(w)
+bot.polling(none_stop=True)
