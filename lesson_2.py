@@ -1,12 +1,13 @@
 # calc v2: color
 #
+from colorama import Fore, Back
 from colorama import init
-from colorama import Fore, Back, Style
 
 # use Colorama to make Termcolor work on Windows too
 init()
 
 print(Fore.BLACK)
+
 print(Back.GREEN)
 
 what = input("Выберите действие (+, -, *, /): ")
