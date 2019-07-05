@@ -1,17 +1,27 @@
-import paramiko
+import sys
+import time
+from skillpub_ssh import SSH
+import re
 
-host = 'xx.xxx.xxx.xxx'
-user = 'xxx'
-secret = 'xxx'
-port = 22
 
-client = paramiko.SSHClient()
-client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-client.connect(hostname=host, username=user, password=secret, port=port)
-stdin, stdout, stderr = client.exec_command('sudo Imysql.client idx -e \"select count(*) as \'Subs Count\' from Subscription\";')
-data = stdout.read() + stderr.read()
-print(stdin)
-print(stdout)
-print(stderr)
-print(data)
-client.close()
+def my_print(data):
+    if ('Subs Count') in data:
+        res = re.findall(" (\\d*) \|", data)
+        count = [str(res)]
+        clean_count = count[0]
+        print(clean_count.replace("['", "").replace("']",""))
+    else:
+        return
+
+
+ssh = SSH()
+res = ssh.connect(host='xx.xxx.xxx.xxx', port=22, username='xxx', password='xxx', callback=my_print)
+
+if res == 1:
+    print("не получилось")
+    sys.exit()
+
+ssh.cmd('sudo Imysql.client idx -e "select count(*) as \'Subs Count\' from Subscription"')
+
+time.sleep(2)
+ssh.close()
