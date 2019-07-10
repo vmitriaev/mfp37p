@@ -1,1 +1,0 @@
-API_TOKEN = "fbyyRv1V9g3ClIx1pYdVys0t"
