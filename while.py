@@ -5,6 +5,7 @@ running = True
 
 while running:
     guess = int(input("Угадай какое целое число я загадал? Напечатай, затем нажми Enter: "))
+
     if guess == number:
         print("Поздравляю, число угадано!")
         running = False
