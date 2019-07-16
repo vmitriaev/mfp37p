@@ -1,8 +1,6 @@
 import requests
 import json
 
-usrlst = requests.get('http://reqres.in/api/users?page=2')
+usr = requests.get('http://reqres.in/api/users/2')
 
-usrone = requests.get('http://reqres.in/api/users/2')
-
-print(json.dumps(usrone.json(), sort_keys=True, indent=4))
+print(json.dumps(usr.json(), sort_keys=True, indent=4))
