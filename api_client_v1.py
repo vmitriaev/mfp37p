@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = ('http://reqres.in/')
+basic_url = ('http://reqres.in/')
 
 meth1 = ('api/users/2')
 
@@ -30,15 +30,15 @@ while True:
     send = input('Enter method number (1/2/3): ')
 
     if send == str(1):
-        request = requests.get(url + meth1)
+        request = requests.get(basic_url + meth1)
         print(ReqUrl(), ReqStat(), ReqJs())
 
     elif send == str(2):
-        request = requests.get(url + meth2)
+        request = requests.get(basic_url + meth2)
         print(ReqUrl(), ReqStat(), ReqJs())
 
     elif send == str(3):
-        request = requests.get(url + meth3)
+        request = requests.get(basic_url + meth3)
         print(ReqUrl(), ReqStat(), ReqJs())
 
     elif send == ('exit'):
