@@ -2,6 +2,7 @@ import requests, json
 
 methods = {1: '/api/users/2', 2: '/api/unknown/2', 3: '/api/unknown/23', 4: '/api/users?page=2'}
 basic_url = ('http://reqres.in')
+errmsg = ('ERROR: enter correct number of method or type stop for exit')
 
 
 def ReqSend():
@@ -24,12 +25,12 @@ def ReqJs():
     return ('\nResponse:' + '\n' + ReqSend() + '\n')
 
 
-#def GoUrl():
-#    return str(basic_url + methods[int(send)])
+def Pod():
+    return ('-' * len(errmsg))
 
 
 while True:
-    send = str(input('Enter method number or stop for exit: '))
+    send = input('Enter method number or stop for exit: ')
 
     if send in ('1', '2', '3', '4'):
         request_url = (basic_url + methods[int(send)])
@@ -40,5 +41,4 @@ while True:
         break
 
     else:
-        print(
-            '\n---------------------------------------------------\nERROR: enter number of method or type stop for exit\n---------------------------------------------------\n')
+        print('\n' + Pod() + '\n' + errmsg + '\n' + Pod() + '\n')
