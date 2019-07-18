@@ -1,15 +1,14 @@
-import requests
-import json
+import requests, json
 
-basic_url = ('http://reqres.in/')
+basic_url = ('http://reqres.in')
 
-meth1 = ('api/users/2')
+meth1 = ('/api/users/2')
 
-meth2 = ('api/unknown/2')
+meth2 = ('/api/unknown/2')
 
-meth3 = ('api/unknown/23')
+meth3 = ('/api/unknown/23')
 
-meth4 = ('api/users?page=2')
+meth4 = ('/api/users?page=2')
 
 
 def ReqStat():
@@ -48,6 +47,9 @@ while True:
         print(ReqUrl(), ReqStat(), ReqJs())
 
     elif send == ('stop'):
+        break
+
+    elif send == (str(0)):
         break
 
     else:
