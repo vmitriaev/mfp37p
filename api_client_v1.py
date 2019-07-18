@@ -9,6 +9,8 @@ meth2 = ('api/unknown/2')
 
 meth3 = ('api/unknown/23')
 
+meth4 = ('api/users?page=2')
+
 
 def ReqStat():
     if request.status_code == 200:
@@ -27,7 +29,7 @@ def ReqJs():
 
 
 while True:
-    send = input('Enter method number (1/2/3): ')
+    send = input('Enter method number 1/2/3 (for exit type stop): ')
 
     if send == str(1):
         request = requests.get(basic_url + meth1)
@@ -41,8 +43,13 @@ while True:
         request = requests.get(basic_url + meth3)
         print(ReqUrl(), ReqStat(), ReqJs())
 
-    elif send == ('exit'):
+    elif send == str(4):
+        request = requests.get(basic_url + meth4)
+        print(ReqUrl(), ReqStat(), ReqJs())
+
+    elif send == ('stop'):
         break
 
     else:
-        print('1 or 2, please!')
+        print(
+            '\n---------------------------------------------------\nERROR: enter number of method or type stop for exit\n---------------------------------------------------\n')
