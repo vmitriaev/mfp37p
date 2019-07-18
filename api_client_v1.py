@@ -10,9 +10,6 @@ meth3 = ('/api/unknown/23')
 
 meth4 = ('/api/users?page=2')
 
-methods = {0:'http://reqres.in', 1:'/api/users/2', 2:'/api/unknown/2', 3:'/api/unknown/23', 4:'/api/users?page=2'}
-
-final_request = (methods[0]+methods[send])
 
 def ReqStat():
     if request.status_code == 200:
