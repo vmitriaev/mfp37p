@@ -1,26 +1,36 @@
 import requests, json
 
-class User():
-    '''Содержит юзеров'''
-    def __init__(self, name, password, job, email, id):
-        self.name = name
-        self.password = password
-        self.job = job
-        self.email = email
-        self.id = id
 
 class ReqRes():
-    '''Запросы к reqres.in'''
-    basic_url = ('http://reqres.in')
+    '''Содержит методы обращения к reqres.in'''
 
     def __init__(self, endpoint):
-        '''Инициализация объекта класса ReqRes.'''
+        '''Инициализация объекта класса ReqRes'''
         self.endpoint = endpoint
+        self.basicUrl = ('https://reqres.in/api/')
 
-    def sendRequestGet(self):
-        '''Отправка GET запроса.'''
-        return requests.get(self.basic_url + self.endpoint)
+    def requestGet(self):
+        '''Формирует url и отправляет GET запрос'''
+        final_url = self.basicUrl + self.endpoint
+        sendGet = requests.get(final_url)
+        return sendGet
 
-get_single_user = ReqRes('/api/users/2')
+    def requestPost(self):
+        '''Формирует url и отправляет POST запрос'''
 
-print(get_single_user.sendRequestGet())
+    def requestPut(self):
+        '''Формирует url и отправляет PUT запрос'''
+
+    def requestPatch(self):
+        '''Формирует url и отправляет PATCH запрос'''
+
+    def requestDelete(self):
+        '''Формирует url и отправляет DELETE запрос'''
+
+    def endPoint(self):
+        '''Формирует окончательный url запроса'''
+
+
+request1 = ReqRes('users/2')
+
+print(request1.requestGet())

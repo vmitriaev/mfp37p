@@ -3,6 +3,9 @@ import requests, json
 methods = {1: '/api/users?page=2', 2: '/api/users/2', 3: '/api/users/23', 4: '/api/unknown', 5: '/api/unknown/2',
            6: '/api/unknown/23', 7: '/api/users', 8: '/api/users/2', 9: '/api/users/2', 10: '/api/users/2',
            11: '/api/register', 12: '/api/register', 13: '/api/login', 14: '/api/login', 15: '/api/users?delay=3'}
+
+
+
 basic_url = ('http://reqres.in')
 errmsg = ('ERROR: enter correct number of method or type stop for exit')
 
