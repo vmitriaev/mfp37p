@@ -4,33 +4,57 @@ import requests, json
 class ReqRes():
     '''Содержит методы обращения к reqres.in'''
 
-    def __init__(self, endpoint):
+    def __init__(self, method, endpoint):
         '''Инициализация объекта класса ReqRes'''
+        self.method = method
         self.endpoint = endpoint
         self.basicUrl = ('https://reqres.in/api/')
 
     def requestGet(self):
-        '''Формирует url и отправляет GET запрос'''
-        final_url = self.basicUrl + self.endpoint
-        sendGet = requests.get(final_url)
+        '''Отправляет GET запрос'''
+        sendGet = requests.get(self.fullUrl())
         return sendGet
 
     def requestPost(self):
-        '''Формирует url и отправляет POST запрос'''
+        '''Отправляет POST запрос'''
 
     def requestPut(self):
-        '''Формирует url и отправляет PUT запрос'''
+        '''Отправляет PUT запрос'''
 
     def requestPatch(self):
-        '''Формирует url и отправляет PATCH запрос'''
+        '''Отправляет PATCH запрос'''
 
     def requestDelete(self):
-        '''Формирует url и отправляет DELETE запрос'''
+        '''Отправляет DELETE запрос'''
 
-    def endPoint(self):
-        '''Формирует окончательный url запроса'''
+    def fullUrl(self):
+        '''Формирует окончательный url для запроса'''
+        finalUrl = self.basicUrl + self.endpoint
+        return finalUrl
+
+    def getFormattedJsonFromRequest(self):
+        '''Выводит форматированный JSON ответа сервиса.'''
+        if str(self.method).lower() == str('get').lower():
+            return json.dumps(self.requestGet().json(), sort_keys=True, indent=4)
+
+        elif str(self.method).lower() == str('post').lower():
+            return json.dumps(self.requestPost().json(), sort_keys=True, indent=4)
+
+        elif str(self.method).lower() == str('put').lower():
+            return json.dumps(self.requestPut().json(), sort_keys=True, indent=4)
+
+        elif str(self.method).lower() == str('patch').lower():
+            return json.dumps(self.requestPatch().json(), sort_keys=True, indent=4)
+
+        elif str(self.method).lower() == str('delete').lower():
+            return json.dumps(self.requestDelete().json(), sort_keys=True, indent=4)
+
+        else:
+            return 'Отсутствует метод запроса!'
 
 
-request1 = ReqRes('users/2')
+request1 = ReqRes('get', 'users/2')
 
-print(request1.requestGet())
+request2 = ReqRes('get', 'unknown/2')
+
+print(request2.getFormattedJsonFromRequest())
