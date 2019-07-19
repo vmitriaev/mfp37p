@@ -56,6 +56,16 @@ class ReqRes():
         else:
             return '\n' + lines + '\nERROR: REQUEST METHOD MISSING OR INCORRECT\n' + lines
 
+    def requestStatus(self):
+        '''Вывод статуса запроса.'''
+        if str(self.method).lower() == 'get':
+
+            if self.requestGet().status_code == 200:
+                return '\nStatus: OK\nCode: ' + str(self.requestGet().status_code)
+
+            else:
+                return '\nStatus: ERROR\nCode: ' + str(self.requestGet().status_code)
+
     def finalResponseOutput(self):
         '''Формирование окончательного ответа: вывод статуса, кода ответа и тела'''
 
@@ -64,4 +74,4 @@ request1 = ReqRes('get', 'users/2')
 
 request2 = ReqRes('GET', 'unknown/2')
 
-print(request2.getFormattedJsonFromRequest())
+print(request2.requestStatus(),request2.getFormattedJsonFromRequest())
