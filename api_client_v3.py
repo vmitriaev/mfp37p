@@ -39,19 +39,19 @@ class ReqRes():
         lines = '-' * len(errorMessage)
 
         if str(self.method).lower() == 'get':
-            return json.dumps(self.requestGet().json(), sort_keys=True, indent=4)
+            return '\nResponse:\n' + json.dumps(self.requestGet().json(), sort_keys=True, indent=4)
 
         elif str(self.method).lower() == 'post':
-            return json.dumps(self.requestPost().json(), sort_keys=True, indent=4)
+            return '\nResponse:\n' + json.dumps(self.requestPost().json(), sort_keys=True, indent=4)
 
         elif str(self.method).lower() == 'put':
-            return json.dumps(self.requestPut().json(), sort_keys=True, indent=4)
+            return '\nResponse:\n' + json.dumps(self.requestPut().json(), sort_keys=True, indent=4)
 
         elif str(self.method).lower() == 'patch':
-            return json.dumps(self.requestPatch().json(), sort_keys=True, indent=4)
+            return '\nResponse:\n' + json.dumps(self.requestPatch().json(), sort_keys=True, indent=4)
 
         elif str(self.method).lower() == 'delete':
-            return json.dumps(self.requestDelete().json(), sort_keys=True, indent=4)
+            return '\nResponse:\n' + json.dumps(self.requestDelete().json(), sort_keys=True, indent=4)
 
         else:
             return '\n' + lines + '\nERROR: REQUEST METHOD MISSING OR INCORRECT\n' + lines
@@ -74,4 +74,4 @@ request1 = ReqRes('get', 'users/2')
 
 request2 = ReqRes('GET', 'unknown/2')
 
-print(request2.requestStatus(),request2.getFormattedJsonFromRequest())
+print(request2.requestStatus(), request2.getFormattedJsonFromRequest())
