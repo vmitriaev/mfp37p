@@ -56,7 +56,7 @@ class ReqRes():
         else:
             return '\n' + lines + '\nERROR: REQUEST METHOD MISSING OR INCORRECT\n' + lines
 
-    def requestStatus(self):
+    def requestStatusOutput(self):
         '''Вывод статуса запроса.'''
         if str(self.method).lower() == 'get':
 
@@ -66,6 +66,38 @@ class ReqRes():
             else:
                 return '\nStatus: ERROR\nCode: ' + str(self.requestGet().status_code)
 
+        elif str(self.method).lower() == 'post':
+
+            if self.requestGet().status_code == 200:
+                return '\nStatus: OK\nCode: ' + str(self.requestPost().status_code)
+
+            else:
+                return '\nStatus: ERROR\nCode: ' + str(self.requestPost().status_code)
+
+        elif str(self.method).lower() == 'put':
+
+            if self.requestGet().status_code == 200:
+                return '\nStatus: OK\nCode: ' + str(self.requestPut().status_code)
+
+            else:
+                return '\nStatus: ERROR\nCode: ' + str(self.requestPut().status_code)
+
+        elif str(self.method).lower() == 'patch':
+
+            if self.requestGet().status_code == 200:
+                return '\nStatus: OK\nCode: ' + str(self.requestPatch().status_code)
+
+            else:
+                return '\nStatus: ERROR\nCode: ' + str(self.requestPatch().status_code)
+
+        elif str(self.method).lower() == 'delete':
+
+            if self.requestGet().status_code == 200:
+                return '\nStatus: OK\nCode: ' + str(self.requestDelete().status_code)
+
+            else:
+                return '\nStatus: ERROR\nCode: ' + str(self.requestDelete().status_code)
+
     def finalResponseOutput(self):
         '''Формирование окончательного ответа: вывод статуса, кода ответа и тела'''
 
@@ -74,4 +106,4 @@ request1 = ReqRes('get', 'users/2')
 
 request2 = ReqRes('GET', 'unknown/2')
 
-print(request2.requestStatus(), request2.getFormattedJsonFromRequest())
+print(request1.requestStatusOutput(), request1.getFormattedJsonFromRequest())
