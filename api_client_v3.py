@@ -56,6 +56,9 @@ class ReqRes():
         else:
             return '\n' + lines + '\nERROR: REQUEST METHOD MISSING OR INCORRECT\n' + lines
 
+    def finalResponseOutput(self):
+        '''Формирование окончательного ответа: вывод статуса, кода ответа и тела'''
+
 
 request1 = ReqRes('get', 'users/2')
 
